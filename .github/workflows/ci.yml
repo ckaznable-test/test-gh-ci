@@ -26,7 +26,7 @@ jobs:
           git config pull.rebase false
           git pull origin main
           date > generated.txt
-          git checkout -b runner
+          git checkout runner
           git add .
           git commit -m "generated"
           git push -f --set-upstream origin runner
