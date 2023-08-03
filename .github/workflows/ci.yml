@@ -21,13 +21,15 @@ jobs:
           ref: runner
 
       - run: |
-          cat generated.txt
+          echo $(cat generated.txt)
+
+      - uses: actions/checkout@v3
+      - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git config pull.rebase false
-          git pull origin main
           date > generated.txt
-          git checkout runner
+          git checkout -b tmp
           git add .
           git commit -m "generated"
-          git push
+          git push origin -d runner
+          git push --set-upstream origin runner
