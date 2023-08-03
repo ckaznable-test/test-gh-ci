@@ -32,4 +32,4 @@ jobs:
           git add .
           git commit -m "generated"
           git push origin -d runner
-          git push -u
+          git push --set-upstream origin runner
