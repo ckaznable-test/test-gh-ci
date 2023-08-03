@@ -21,10 +21,11 @@ jobs:
           ref: runner
 
       - run: |
-          git pull origin main
-          date > generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git config pull.rebase false
+          git pull origin main
+          date > generated.txt
           git checkout -b runner
           git add .
           git commit -m "generated"
